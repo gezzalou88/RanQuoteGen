@@ -1,0 +1,53 @@
+body {
+  text-align: center;
+  background-color: #77BA99;
+  font-family: 'Annie Use Your Telescope', cursive;
+  font-size: 400%;
+}
+
+.fullPage {
+  padding: 70px 0;
+}
+
+#fullQuote {
+  width: 50%;
+  margin: auto;
+  background-color: #EFF0D1;
+  border-radius: 20px;
+}
+
+#quoteText {
+  padding: 40px;
+  color: #262730;
+}
+
+#authorName {
+  padding: 40px;  
+  color: #D33F49;
+}
+
+button {
+  background-color: #D7C0D0;
+  border-color: #D7C0D0;
+  border-style: solid;
+  border-width: 20px;
+  margin: 10px;
+  color: #262730;
+  text-decoration: none;
+  width: 150px;
+  height: 50px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 50%;
+}
+
+a {
+  color: #262730;
+  text-decoration: none;
+}
+
+h4 {
+	background-color: #262730;
+	color: #D7C0D0;
+	font-weight: bold;
+}
