@@ -1,16 +1,32 @@
 $(document).ready(function() {
-	//$( "#tweetMe" ).hide();  
-  $("#getQuote").on("click", function(){  
-		var quoteArr = [];
-  		$.getJSON("http://api.forismatic.com/api/1.0/?method=getQuote&key=457653&format=jsonp&lang=en&jsonp=?", function(data){
-			$.each(data, function(i, field){
-			    quoteArr.push(field);
-			});
-			$("#quoteText").html(quoteArr[0]);
-        		$("#authorName").html(quoteArr[1]);
-        		//$( "#tweetMe" ).show();  
-var gourl = 'http://twitter.com/home/?status=' + quoteArr[0] + ' ' + quoteArr[1];
-$("#tweetLink").attr("href", gourl);
-    		});
-    	});
-   });
+	$('#getQuote').on('click', function(e) {
+	    e.preventDefault();
+	    $.ajax( {
+	      url: 'https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1',
+	      success: function(data) {
+	        var post = data.shift(); // The data is an array of posts. Grab the first one.
+	        $('#quoteText').html(post.content);
+	        $('#authorName').html(post.title);
+	        
+	        var htmlQuote = post.content;
+	        var htmlAuthor = post.title;
+		var divQuote = document.createElement("div");
+		var divAuthor = document.createElement("div");
+		divQuote.innerHTML = htmlQuote;
+		divAuthor.innerHTML = htmlAuthor;
+		var textQuote = divQuote.textContent || divQuote.innerText || "";
+		var textAuthor = divAuthor.textContent || divAuthor.innerText || "";
+	        
+	        var gourl = "https://twitter.com/home/?status=" + textQuote + " " + textAuthor;
+		$("#tweetLink").attr("href", gourl);
+	      },
+	      cache: false
+	    });
+	  });
+});
+	
+	
+	
+  
+   
+   
